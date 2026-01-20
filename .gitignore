@@ -1,0 +1,5 @@
+venv/
+bdd100k_raw/
+*bdd100k_det_20_labels.zip
+*bdd100k_images_100k.zip
+datasets/
