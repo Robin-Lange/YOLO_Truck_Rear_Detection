@@ -15,23 +15,6 @@ sudo apt-get remove python3-torchaudio
 python3 -c "import torch; print(f'Version: {torch.__version__}'); print(f'CUDA available: {torch.cuda.is_available()}')"
 python3 -c "import torch; print(torch.__file__)"
 
-
 pip install 'numpy<2'
 
-
 source venv/bin/activate
-
-
-yolo detect train \
-  model=yolo11n.pt \
-  data=datasets/rear_trucks/data.yaml \
-  epochs=100 \
-  imgsz=640 \
-  batch=32 \
-  device=0 \
-  project=KICSafe_Research \
-  name=yolo11n_stable \
-  workers=8 \
-  mosaic=0.0 \
-  cache=True \
-  amp=True
