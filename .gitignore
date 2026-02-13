@@ -2,4 +2,7 @@ venv/
 bdd100k_raw/
 *bdd100k_det_20_labels.zip
 *bdd100k_images_100k.zip
+*bdd100k_labels.zip
+*best-fp16.tflite
 datasets/
+*vehicle-orientation-1.zip

@@ -18,3 +18,9 @@ python3 -c "import torch; print(torch.__file__)"
 pip install 'numpy<2'
 
 source venv/bin/activate
+
+Add for vehicle orientation
+pip install tensorflow
+python detect.py --weights best-fp16.tflite --source ../datasets/rear_trucks/images/val --img 640 --conf 0.25 --project runs/detect --name bdd_filtered_test --classes 6 --save-txt
+
+then in folder runs
