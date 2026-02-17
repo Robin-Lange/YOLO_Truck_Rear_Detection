@@ -6,3 +6,7 @@ bdd100k_raw/
 *best-fp16.tflite
 datasets/
 *vehicle-orientation-1.zip
+raw_dataset/
+*.pt
+runs/yolo26l_truck_rear_final_run/weights
+KICSafe_Research/report_predictions/
