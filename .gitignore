@@ -21,3 +21,4 @@ raw_dataset/
 *.pt
 runs/yolo26l_truck_rear_final_run/weights
 KICSafe_Research/report_predictions/
+yolov5/
