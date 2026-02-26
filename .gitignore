@@ -1,3 +1,14 @@
+# Ignore model weights and outputs
+runs/
+*.pt
+*.pth
+weights/
+output/
+*.log
+*.tmp
+*.cache
+__pycache__/
+*.ipynb_checkpoints/
 venv/
 bdd100k_raw/
 *bdd100k_det_20_labels.zip
