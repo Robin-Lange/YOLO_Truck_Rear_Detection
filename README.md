@@ -67,3 +67,39 @@ python detect.py \
 Speed: 1.7ms pre-process, 5006.8ms inference, 4.3ms NMS per image at shape (1, 3, 640, 640)
 Results saved to runs/detect/vehicle_orientation_tflite_test32
 331 labels saved to runs/detect/vehicle_orientation_tflite_test32/labels
+
+
+
+PS C:\Users\0507r\Downloads\model_comp> python compare_detections.py
+
+══════════════════════════════════════════════════════════════════════
+  DETECTION COMPARISON  –  646 images
+──────────────────────────────────────────────────────────────────────
+  Model A  YOLO26  (BDD trained) : C:\Users\0507r\Downloads\model_comp\bdd_filtered_test\labels
+  Model B  TFLite  (VehicleOri)  : C:\Users\0507r\Downloads\model_comp\vehicle_orientation_tflite_test32\labels
+  Output                         : C:\Users\0507r\Downloads\model_comp\comparison_output
+══════════════════════════════════════════════════════════════════════
+
+
+══════════════════════════════════════════════════════════════════════
+  RESULTS  (646 images)
+──────────────────────────────────────────────────────────────────────
+  Both detected       (agreement  ✓)             296  ( 45.8%)  ██████████████████████
+  YOLO26 only         (TFLite missed  ✗)          89  ( 13.8%)  ██████
+  TFLite only         (YOLO26 missed  ✗)          35  (  5.4%)  ██
+  Neither detected    (no visible truck rear)    226  ( 35.0%)  █████████████████
+──────────────────────────────────────────────────────────────────────
+  Agreement   :  522 / 646  (80.8%)
+  Disagreement:  124 / 646  (19.2%)
+
+  Proxy recall  (among 420 images with ≥1 detection):
+    YOLO26 (BDD)    : 0.917  →  385 detections
+    TFLite (VehOri) : 0.788  →  331 detections
+
+  Raw detection count cross-check:
+    YOLO26 label files  : 385  (log reported 385)
+    TFLite label files  : 331  (log reported 331)
+
+  CSV saved → C:\Users\0507r\Downloads\model_comp\comparison_output\comparison_report.csv
+  Vis saved → C:\Users\0507r\Downloads\model_comp\comparison_output\side_by_side  (124 images rendered)
+══════════════════════════════════════════════════════════════════════
