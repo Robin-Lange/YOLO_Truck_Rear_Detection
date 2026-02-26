@@ -21,10 +21,8 @@ source venv/bin/activate
 
 Add for vehicle orientation
 pip install tensorflow
-python detect.py --weights best-fp16.tflite --source ../datasets/rear_trucks/images/val --img 640 --conf 0.25 --project runs/detect --name bdd_filtered_test --classes 6 --save-txt
 
-then in folder runs
-
+then in folder run
 
 
 Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
@@ -46,7 +44,6 @@ Results saved to /mnt/nova_ssd/workspaces/carissma_camera_detection/runs/yolo26l
 💡 Learn more at https://docs.ultralytics.com/modes/train
 VS Code: view Ultralytics VS Code Extension ⚡ at https://docs.ultralytics.com/integrations/vscode
 
-
 python detect.py --weights best.pt --source ../datasets/rear_trucks/images/val --img 640 --conf 0.5 --project runs/detect --name bdd_filtered_test --classes 0 --save-txt
 
 image 646/646 /mnt/nova_ssd/workspaces/carissma_camera_detection/datasets/rear_trucks/images/val/fe1f55fa-19ba3600.jpg: 384x640 1 truck_rear, 52.4ms
@@ -55,6 +52,7 @@ Results saved to /mnt/nova_ssd/workspaces/carissma_camera_detection/runs/detect/
 385 labels saved to /mnt/nova_ssd/workspaces/carissma_camera_detection/runs/detect/runs/detect/bdd_filtered_test/labels
 
 after defining custom yaml file
+
 python detect.py \
   --weights best-fp16.tflite \
   --source ../datasets/rear_trucks/images/val \
@@ -66,7 +64,6 @@ python detect.py \
   --classes 6 \
   --save-txt
 
-
-  Speed: 1.7ms pre-process, 5006.8ms inference, 4.3ms NMS per image at shape (1, 3, 640, 640)
+Speed: 1.7ms pre-process, 5006.8ms inference, 4.3ms NMS per image at shape (1, 3, 640, 640)
 Results saved to runs/detect/vehicle_orientation_tflite_test32
 331 labels saved to runs/detect/vehicle_orientation_tflite_test32/labels
