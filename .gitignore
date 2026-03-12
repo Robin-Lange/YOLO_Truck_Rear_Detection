@@ -20,8 +20,6 @@ raw_dataset/
 datasets/
 data/
 
-# === Results (regenerate with scripts/run_comparison.py) ===
-results/
 
 # === Python ===
 __pycache__/
@@ -49,6 +47,3 @@ data/raw/aebs_target/
 data/raw/real_trucks/
 # Keep data/prompts/ and data/labeled/ tracked
 
-# === MATLAB generated outputs ===
-matlab/images/
-matlab/labels/
