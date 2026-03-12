@@ -1,24 +1,54 @@
-# Ignore model weights and outputs
-runs/
+# === Model weights ===
 *.pt
 *.pth
+*.onnx
+*.tflite
+*.engine
+models/
+
+# === Training outputs ===
+runs/
 weights/
 output/
+
+# === Large datasets (download separately) ===
+bdd100k_raw/
+bdd100k_images_100k.zip
+bdd100k_labels.zip
+vehicle-orientation-1.zip
+raw_dataset/
+datasets/
+data/
+
+# === Results (regenerate with scripts/run_comparison.py) ===
+results/
+
+# === Python ===
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+*.ipynb_checkpoints/
+venv/
+.venv/
+*ts
+
+# === System ===
 *.log
 *.tmp
 *.cache
-__pycache__/
-*.ipynb_checkpoints/
-venv/
-bdd100k_raw/
-*bdd100k_det_20_labels.zip
-*bdd100k_images_100k.zip
-*bdd100k_labels.zip
-*best-fp16.tflite
-datasets/
-*vehicle-orientation-1.zip
-raw_dataset/
-*.pt
-runs/yolo26l_truck_rear_final_run/weights
-KICSafe_Research/report_predictions/
+.DS_Store
+Thumbs.db
+
+# === YOLOv5 clone ===
 yolov5/
+
+# === Data: raw images are large — keep prompts and labeled set ===
+data/raw/bdd100k_samples/
+data/raw/aebs_target/
+data/raw/real_trucks/
+# Keep data/prompts/ and data/labeled/ tracked
+
+# === MATLAB generated outputs ===
+matlab/images/
+matlab/labels/
