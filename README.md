@@ -167,6 +167,7 @@ Speed: 0.1ms preprocess, 10.2ms inference, 0.4ms postprocess per image
 ```bash
 source venv/bin/activate
 
+<<<<<<< HEAD
 # Run on validation set
 yolo detect predict \
   model=models/yolo26l/best.pt \
@@ -180,11 +181,48 @@ bash scripts/test_predictions.sh
 ```
 
 ### YOLOv5 (TFLite)
+=======
+Add for vehicle orientation
+pip install tensorflow
+
+then in folder run
+>>>>>>> d58a2dbd5dc9311b7a4c90a929288ee699ccaca5
 
 ```bash
 source venv/bin/activate
 cd yolov5
 
+<<<<<<< HEAD
+=======
+Epoch    GPU_mem   box_loss   cls_loss   dfl_loss  Instances       Size
+    300/300      5.89G     0.2292    0.07607   0.001205          5        640: 100% ━━━━━━━━━━━━ 1277/1277 1.3it/s 16:10
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 172/172 2.9it/s 58.7s
+                   all       2749       3535      0.971      0.945      0.979      0.895
+
+300 epochs completed in 85.886 hours.
+Optimizer stripped from /mnt/nova_ssd/workspaces/carissma_camera_detection/runs/yolo26l_truck_rear_final_run/weights/last.pt, 53.0MB
+Optimizer stripped from /mnt/nova_ssd/workspaces/carissma_camera_detection/runs/yolo26l_truck_rear_final_run/weights/best.pt, 53.0MB
+
+Validating /mnt/nova_ssd/workspaces/carissma_camera_detection/runs/yolo26l_truck_rear_final_run/weights/best.pt...
+Ultralytics 8.4.6 🚀 Python-3.10.12 torch-2.8.0 CUDA:0 (Orin, 62841MiB)
+YOLO26l summary (fused): 190 layers, 24,746,511 parameters, 0 gradients, 86.1 GFLOPs
+                 Class     Images  Instances      Box(P          R      mAP50  mAP50-95): 100% ━━━━━━━━━━━━ 172/172 3.7it/s 46.1s
+                   all       2749       3535      0.973       0.94      0.982      0.897
+Speed: 0.1ms preprocess, 10.2ms inference, 0.0ms loss, 0.4ms postprocess per image
+Results saved to /mnt/nova_ssd/workspaces/carissma_camera_detection/runs/yolo26l_truck_rear_final_run
+💡 Learn more at https://docs.ultralytics.com/modes/train
+VS Code: view Ultralytics VS Code Extension ⚡ at https://docs.ultralytics.com/integrations/vscode
+
+python detect.py --weights best.pt --source ../datasets/rear_trucks/images/val --img 640 --conf 0.5 --project runs/detect --name bdd_filtered_test --classes 0 --save-txt
+
+image 646/646 /mnt/nova_ssd/workspaces/carissma_camera_detection/datasets/rear_trucks/images/val/fe1f55fa-19ba3600.jpg: 384x640 1 truck_rear, 52.4ms
+Speed: 2.9ms preprocess, 52.5ms inference, 1.2ms postprocess per image at shape (1, 3, 384, 640)
+Results saved to /mnt/nova_ssd/workspaces/carissma_camera_detection/runs/detect/runs/detect/bdd_filtered_test
+385 labels saved to /mnt/nova_ssd/workspaces/carissma_camera_detection/runs/detect/runs/detect/bdd_filtered_test/labels
+
+after defining custom yaml file
+
+>>>>>>> d58a2dbd5dc9311b7a4c90a929288ee699ccaca5
 python detect.py \
   --weights ../models/yolov5/best-fp16.tflite \
   --source ../datasets/rear_trucks/images/val \
@@ -298,6 +336,7 @@ quantitative_eval     % Reads results/summary.csv, generates plots
 - The `datasets/rear_trucks/` folder is kept for potential re-training and validation runs.
 - MATLAB evaluation is done externally; the `matlab/` folder contains all necessary scripts and images.
 
+<<<<<<< HEAD
 
 
 =================================================================
@@ -310,3 +349,44 @@ Summary
     - b1d0a191-65deaeef.jpg
     - b1e0c01d-dd9e6e2f.jpg
     - b3cc736f-b7a66149.jpg
+=======
+Speed: 1.7ms pre-process, 5006.8ms inference, 4.3ms NMS per image at shape (1, 3, 640, 640)
+Results saved to runs/detect/vehicle_orientation_tflite_test32
+331 labels saved to runs/detect/vehicle_orientation_tflite_test32/labels
+
+
+
+PS C:\Users\0507r\Downloads\model_comp> python compare_detections.py
+
+══════════════════════════════════════════════════════════════════════
+  DETECTION COMPARISON  –  646 images
+──────────────────────────────────────────────────────────────────────
+  Model A  YOLO26  (BDD trained) : C:\Users\0507r\Downloads\model_comp\bdd_filtered_test\labels
+  Model B  TFLite  (VehicleOri)  : C:\Users\0507r\Downloads\model_comp\vehicle_orientation_tflite_test32\labels
+  Output                         : C:\Users\0507r\Downloads\model_comp\comparison_output
+══════════════════════════════════════════════════════════════════════
+
+
+══════════════════════════════════════════════════════════════════════
+  RESULTS  (646 images)
+──────────────────────────────────────────────────────────────────────
+  Both detected       (agreement  ✓)             296  ( 45.8%)  ██████████████████████
+  YOLO26 only         (TFLite missed  ✗)          89  ( 13.8%)  ██████
+  TFLite only         (YOLO26 missed  ✗)          35  (  5.4%)  ██
+  Neither detected    (no visible truck rear)    226  ( 35.0%)  █████████████████
+──────────────────────────────────────────────────────────────────────
+  Agreement   :  522 / 646  (80.8%)
+  Disagreement:  124 / 646  (19.2%)
+
+  Proxy recall  (among 420 images with ≥1 detection):
+    YOLO26 (BDD)    : 0.917  →  385 detections
+    TFLite (VehOri) : 0.788  →  331 detections
+
+  Raw detection count cross-check:
+    YOLO26 label files  : 385  (log reported 385)
+    TFLite label files  : 331  (log reported 331)
+
+  CSV saved → C:\Users\0507r\Downloads\model_comp\comparison_output\comparison_report.csv
+  Vis saved → C:\Users\0507r\Downloads\model_comp\comparison_output\side_by_side  (124 images rendered)
+══════════════════════════════════════════════════════════════════════
+>>>>>>> d58a2dbd5dc9311b7a4c90a929288ee699ccaca5
